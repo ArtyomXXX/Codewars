@@ -1,0 +1,31 @@
+#DESCRIPTION: 
+
+'''
+Digital root is the recursive sum of all the digits in a number.
+Given n, take the sum of the digits of n. If that value has more than one digit, 
+continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer.
+'''
+
+def digital_root(N):
+    
+    if N > 0:
+        
+        first_sum_of_the_list = []
+        
+        while N > 0:
+            i = N % 10
+            N = N // 10
+            first_sum_of_the_list.append(i)
+            
+        N = sum(first_sum_of_the_list)
+
+        if N >= 10:
+            r = digital_root(N)
+            return r
+        else:
+            return N
+        
+    else:
+        return N
+
+print(digital_root(456))
